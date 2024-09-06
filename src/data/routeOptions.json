@@ -1,0 +1,12 @@
+[
+    { "value": "Main Line", "label": "Main Line" },
+    { "value": "Coastal Line", "label": "Coastal Line" },
+    { "value": "Northern Line", "label": "Northern Line" },
+    { "value": "Eastern Line", "label": "Eastern Line" },
+    { "value": "Matale Line", "label": "Matale Line" },
+    { "value": "Puttalam Line", "label": "Puttalam Line" },
+    { "value": "Kelani Valley Line", "label": "Kelani Valley Line" },
+    { "value": "Batticaloa Line", "label": "Batticaloa Line" },
+    { "value": "Mannar Line", "label": "Mannar Line" }
+  ]
+  

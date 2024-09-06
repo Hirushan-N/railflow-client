@@ -1,64 +1,42 @@
 // src/services/trainService.js
 import axios from 'axios';
 
-// Define the base URL for the API
-const API_BASE_URL = 'https://cobsccompy4231p-012-api-8e2e4fbeaabd.herokuapp.com/api/trains';
+const API_URL = "http://localhost:3000/api/trains";  // Replace with your actual API URL
 
-// Function to get all trains
+// Get all trains
 const getAllTrains = async () => {
-    try {
-        const response = await axios.get(API_BASE_URL);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+  const response = await axios.get(`${API_URL}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+  });
+  return response.data;
 };
 
-// Function to get a train by ID
-const getTrainById = async (id) => {
-    try {
-        const response = await axios.get(`${API_BASE_URL}/${id}`);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
-};
-
-// Function to create a new train
+// Create a new train
 const createTrain = async (trainData) => {
-    try {
-        const response = await axios.post(API_BASE_URL, trainData);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+  const response = await axios.post(`${API_URL}`, trainData, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+  });
+  return response.data;
 };
 
-// Function to update a train by ID
-const updateTrain = async (id, trainData) => {
-    try {
-        const response = await axios.put(`${API_BASE_URL}/${id}`, trainData);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+// Update an existing train
+const updateTrain = async (trainId, trainData) => {
+  console.log(trainId);
+  console.log(trainData);
+
+  const response = await axios.put(`${API_URL}/${trainId}`, trainData, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+  });
+  console.log('response - ',response);
+  return response.data;
 };
 
-// Function to delete a train by ID
-const deleteTrain = async (id) => {
-    try {
-        const response = await axios.delete(`${API_BASE_URL}/${id}`);
-        return response.data;
-    } catch (error) {
-        throw error;
-    }
+// Delete a train
+const deleteTrain = async (trainId) => {
+  const response = await axios.delete(`${API_URL}/${trainId}`, {
+    headers: { Authorization: `Bearer ${localStorage.getItem('authToken')}` }
+  });
+  return response.data;
 };
 
-// Export all functions
-export default {
-    getAllTrains,
-    getTrainById,
-    createTrain,
-    updateTrain,
-    deleteTrain,
-};
+export default { getAllTrains, createTrain, updateTrain, deleteTrain };
